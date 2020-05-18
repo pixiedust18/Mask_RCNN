@@ -2110,7 +2110,6 @@ class MaskRCNN():
         if exclude:
             by_name = True
 
-        filepath = 'gdrive/My Drive/weights/'
 
         if h5py is None:
             raise ImportError('`load_weights` requires h5py.')
