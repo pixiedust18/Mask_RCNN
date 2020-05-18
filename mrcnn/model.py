@@ -2109,7 +2109,7 @@ class MaskRCNN():
 
         if exclude:
             by_name = True
-
+	filepath = 'gdrive/My Drive'
         if h5py is None:
             raise ImportError('`load_weights` requires h5py.')
         f = h5py.File(filepath, mode='r')
