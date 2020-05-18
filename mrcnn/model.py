@@ -2109,13 +2109,15 @@ class MaskRCNN():
 
         if exclude:
             by_name = True
-	filepath = 'gdrive/My Drive'
+
+        filepath = 'gdrive/My Drive'
+
         if h5py is None:
             raise ImportError('`load_weights` requires h5py.')
         f = h5py.File(filepath, mode='r')
         if 'layer_names' not in f.attrs and 'model_weights' in f:
             f = f['model_weights']
-
+        
         # In multi-GPU training, we wrap the model. Get layers
         # of the inner model because they have the weights.
         keras_model = self.keras_model
@@ -2183,7 +2185,7 @@ class MaskRCNN():
         self.keras_model.add_loss(tf.add_n(reg_losses))
 
         # Compile
-        self.keras_model.compile(
+        self.keras_model.compile(metrics = ['accuracy']
             optimizer=optimizer,
             loss=[None] * len(self.keras_model.outputs))
 
